@@ -32,13 +32,13 @@ Window {
 
             Behavior on x {
                 id: xBehaviour
-                    NumberAnimation { duration: 50 }
-                }
+                PropertyAnimation { easing.type: Easing.Linear; duration: 10 }
+            }
 
             Behavior on y {
                 id: yBehaviour
-                    NumberAnimation { duration: 50 }
-                }
+                PropertyAnimation { easing.type: Easing.Linear; duration: 10 }
+            }
         }
     }
 
@@ -58,15 +58,15 @@ Window {
                 checkable: true
                 iconSource: checked ? "qrc:///assets/Record-Pressed-icon.png" : "qrc:///assets/Record-Normal-icon.png"
                 onCheckedChanged: {
-//                    resetButton.enabled = !checked;
+                    //                    resetButton.enabled = !checked;
                     playButton.enabled = !checked;
                     checked ? player.startRecord() : player.stopRecord()
                 }
             }
-//            Button {
-//                id: resetButton
-//                iconSource: "qrc:///assets/Reload-icon.png"
-//            }
+            //            Button {
+            //                id: resetButton
+            //                iconSource: "qrc:///assets/Reload-icon.png"
+            //            }
             Button{
                 id: playButton
                 iconSource: "qrc:///assets/Play-1-Normal-icon.png"

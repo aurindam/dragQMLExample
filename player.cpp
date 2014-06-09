@@ -6,7 +6,7 @@ CustomPlayer::CustomPlayer(QQuickItem *parent) :
     QQuickItem(parent),
     m_index(0)
 {
-    m_timer.setInterval(100);
+    m_timer.setInterval(10);
 
 }
 
