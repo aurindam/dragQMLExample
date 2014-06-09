@@ -20,7 +20,25 @@ Window {
             maximumX: gameArea.width - 10
             maximumY: gameArea.height - 10
 
-            onReplayStopped: recordButton.enabled = true
+            onReplayStopped: {
+                recordButton.enabled = true
+                xBehaviour.enabled = false
+                yBehaviour.enabled = false
+            }
+            onReplayStarted: {
+                xBehaviour.enabled = true
+                yBehaviour.enabled = true
+            }
+
+            Behavior on x {
+                id: xBehaviour
+                    NumberAnimation { duration: 50 }
+                }
+
+            Behavior on y {
+                id: yBehaviour
+                    NumberAnimation { duration: 50 }
+                }
         }
     }
 

@@ -18,6 +18,7 @@ public slots:
 
 signals:
     void replayStopped();
+    void replayStarted();
 
 private slots:
     void recordMovement();

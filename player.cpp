@@ -32,6 +32,7 @@ void CustomPlayer::startReplay()
 {
     if (m_timer.isActive())
         return;
+    emit replayStarted();
     m_index = 0;
     connect(&m_timer, SIGNAL(timeout()), SLOT(replayMovement()));
     m_timer.start();
@@ -45,14 +46,15 @@ void CustomPlayer::recordMovement()
 
 void CustomPlayer::replayMovement()
 {
-    if (m_index >= m_xPos.count()) {
+    if (m_index >= m_xPos.count() || m_index >= m_yPos.count()) {
+        m_index = 0;
         m_timer.stop();
         disconnect(&m_timer, SIGNAL(timeout()), this, SLOT(replayMovement()));
         emit replayStopped();
-        m_index = 0;
         return;
-    }
+    } else {
 
-    setX(m_xPos.at(m_index++));
-    setY(m_yPos.at(m_index++));
+        setX(m_xPos.at(m_index++));
+        setY(m_yPos.at(m_index++));
+    }
 }
